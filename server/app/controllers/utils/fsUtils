@@ -1,0 +1,51 @@
+const fs = require('fs').promises;
+const {mkdir, rm} = require ('fs').promises;
+const { readdirSync, rmSync, mkdirSync, existsSync } = require('fs');
+
+
+exports.deleteFile = async(filePath) => {
+  try {
+    await fs.unlink(filePath);
+    console.log(`Deleted ${filePath}`);
+  } catch (error) {
+    console.error(`Got an error trying to delete the file: ${error.message}`);
+  }
+}
+
+exports.moveFile = async(source, destination)=> {
+    try {
+        await fs.rename(source, destination);
+        console.log(`Moved file from ${source} to ${destination}`);
+    } catch (error) {
+        console.error(`Got an error trying to move the file: ${error.message}`);
+    }
+}
+
+exports.removeRootDirectory = async (path) =>{
+    try{
+        await readdirSync(path).forEach(f => rmSync(`${path}/${f}`));
+    } catch(error) {
+        console.error(`Got an error trying to remove all files in directory: ${error.message}`)
+    }
+}
+exports.removeDirectory = async(path)=>{
+    try{
+        await rm(path, {recursive: true});
+    } catch(error) {
+        console.error(`Got an error trying to remove the directory: ${error.message}`)
+    }
+}
+
+exports.createDirectory = async (path) => {
+    try{
+        console.log("Going to create directory /tmp/test");
+        await fs.mkdir('/tmp/test',function(err) {
+           if (err) {
+              return console.error(err);
+           }
+           console.log("Directory created successfully!");
+        });
+    } catch(error) {
+        console.error(`Got an error trying to create a directory: ${error.message}`)
+    }
+}

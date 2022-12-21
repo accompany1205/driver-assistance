@@ -1,0 +1,21 @@
+
+::-webkit-scrollbar {
+    border-radius: 1px;
+    height: 4px;
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #9c9c9c;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #bcbcc8, #b0b0bf 33%), #bcbcc8;
+    border-radius: 1px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, rgba(173, 173, 173, 0.05), hsla(0, 0%, 100%, 0)),
+      linear-gradient(0deg, #7b7b80, #1c1c22), #c4c4c4;
+    border-radius: 1px;
+  }
